@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculation Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Custom styles here */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .results-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .results-section h2 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .btn-back {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="results-section">
+        <h2>Calculation Results</h2>
+
+        <!-- First Appointment -->
+        <h3>First Appointment (6 months after applying)</h3>
+        <ul>
+            <li><strong>Option Fee:</strong> {{ "{:,.2f}".format(results['Option Fee']) }}</li>
+        </ul>
+
+        <!-- Second Appointment -->
+        <h3>Second Appointment (6 months after first appointment)</h3>
+        <ul>
+            <li><strong>First Downpayment (after Option Fee and CPF):</strong> {{ "{:,.2f}".format(results['First Downpayment']) }}</li>
+            <li><strong>Stamp Duty:</strong> {{ "{:,.2f}".format(results['Stamp Duty']) }}</li>
+            <li><strong>Total Second Appointment Payment:</strong> {{ "{:,.2f}".format(results['Total First Payment']) }}</li>
+        </ul>
+
+        <!-- Key Collection Day -->
+        <h3>Key Collection Day</h3>
+        <ul>
+            <li><strong>Second Downpayment:</strong> {{ "{:,.2f}".format(results['Second Downpayment']) }}</li>
+            <li><strong>Renovation Fee + Furniture:</strong> {{ "{:,.2f}".format(results['Renovation Fee']) }}</li>
+            <li><strong>Lease in Escrow:</strong> {{ "{:,.2f}".format(results['Lease in Escrow']) }}</li>
+            <li><strong>Survey Fees:</strong> {{ "{:,.2f}".format(results['Survey Fees']) }}</li>
+            <li><strong>Stamp Duty for Deed of Assignment:</strong> {{ "{:,.2f}".format(results['Stamp Duty Deed Assignment']) }}</li>
+            <li><strong>Legal Fees:</strong> {{ "{:,.2f}".format(results['Legal Fees']) }}</li>
+            <li><strong>Total Key Collection Payment:</strong> {{ "{:,.2f}".format(results['Total Key Collection Payment']) }}</li>
+        </ul>
+
+        <!-- Subsequent Payments (Monthly) -->
+        <h3>Subsequent Payments (Monthly)</h3>
+        <ul>
+            <li><strong>Housing Loan (25 years, 2.6%, 80% LTV):</strong></li>
+            <li><strong>Monthly Repayment:</strong> {{ "{:,.2f}".format(results['Monthly Repayment']) }}</li>
+            <li><strong>Home Protection Insurance:</strong> {{ "{:,.2f}".format(results['Home Protection']) }}</li>
+            <li><strong>Fire Insurance:</strong> {{ "{:,.2f}".format(results['Fire Insurance']) }}</li>
+            <li><strong>Total Monthly Payment:</strong> {{ "{:,.2f}".format(results['Total Monthly Payment']) }}</li>
+        </ul>
+
+        <a href="{{ url_for('index') }}" class="btn btn-secondary btn-back">Back to Calculator</a>
+    </div>
+</div>
+</body>
+</html>

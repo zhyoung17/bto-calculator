@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Housing Loan Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Custom styles here */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .form-section h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center my-5">Housing Loan Calculator</h1>
+    <form method="post">
+        <div class="form-section">
+            <h3>Personal Information</h3>
+            <div class="form-group">
+                <label>Applying as Student NSF:</label>
+                <select name="applying_as_student_nsf" class="form-control">
+                    <option value="YES">YES</option>
+                    <option value="NO" selected>NO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Husband Start Work Date:</label>
+                <div class="form-row">
+                    <div class="col">
+                        <select name="husband_start_work_month" class="form-control">
+                            {% for month in months %}
+                                <option value="{{ month }}">{{ month }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="husband_start_work_year" class="form-control">
+                            {% for year in years %}
+                                <option value="{{ year }}"
+                                    {% if year == default_work_year %}selected{% endif %}>
+                                    {{ year }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Wife Start Work Date:</label>
+                <div class="form-row">
+                    <div class="col">
+                        <select name="wife_start_work_month" class="form-control">
+                            {% for month in months %}
+                                <option value="{{ month }}">{{ month }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="wife_start_work_year" class="form-control">
+                            {% for year in years %}
+                                <option value="{{ year }}"
+                                    {% if year == default_work_year %}selected{% endif %}>
+                                    {{ year }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Husband Salary:</label>
+                <input type="number" name="husband_salary" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Wife Salary:</label>
+                <input type="number" name="wife_salary" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>House Information</h3>
+            <div class="form-group">
+                <label>Price of House:</label>
+                <input type="number" name="price_of_house" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>House Completion Date:</label>
+                <div class="form-row">
+                    <div class="col">
+                        <select name="house_completion_month" class="form-control">
+                            {% for month in months %}
+                                <option value="{{ month }}">{{ month }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="house_completion_year" class="form-control">
+                            {% for year in years %}
+                                <option value="{{ year }}"
+                                    {% if year == default_bto_completion_year %}selected{% endif %}>
+                                    {{ year }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Room Type:</label>
+                <select name="room_type" class="form-control">
+                    <option value="3 ROOM">3 ROOM</option>
+                    <option value="4 ROOM">4 ROOM</option>
+                    <option value="5 ROOM">5 ROOM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>PLH:</label>
+                <select name="plh" class="form-control">
+                    <option value="YES">YES</option>
+                    <option value="NO" selected>NO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>PLH Percentage:</label>
+                <input type="number" step="0.01" name="plh_percentage" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Estimated Renovation Fee:</label>
+                <input type="number" name="estimated_renovation_fee" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>CPF Information</h3>
+            <div class="form-group">
+                <label>Husband OA CPF Value:</label>
+                <input type="number" name="husband_oa_cpf_value" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Wife OA CPF Value:</label>
+                <input type="number" name="wife_oa_cpf_value" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+    </form>
+</div>
+</body>
+</html>
